@@ -60,8 +60,8 @@ export function PitchRing({ rootPc, scale, notation }) {
         <motion.path
           key={scale.id + rootPc}
           d={poly}
-          fill="rgba(108,140,255,.14)"
-          stroke="var(--note)"
+          fill="rgba(224,48,35,.12)"
+          stroke="var(--accent)"
           strokeWidth="2.2"
           strokeLinejoin="round"
           initial={{ pathLength: 0, opacity: 0 }}
@@ -81,17 +81,17 @@ export function PitchRing({ rootPc, scale, notation }) {
                 cx={x}
                 cy={y}
                 initial={false}
-                animate={{ r: on ? (isActive ? 22 : 18) : 4.5, fill: on ? (semi === 0 ? '#ff5d73' : '#6c8cff') : '#3a4276' }}
+                animate={{ r: on ? (isActive ? 22 : 18) : 4.5, fill: on ? (semi === 0 ? '#e03023' : '#f4f4f4') : '#3a3e48' }}
                 transition={{ type: 'spring', stiffness: 420, damping: 18 }}
                 stroke={isActive ? '#fff' : 'none'}
                 strokeWidth="2.5"
               />
               {on && (
                 <>
-                  <text x={x} y={y} textAnchor="middle" dominantBaseline="central" fontSize="13" fontWeight="800" fill="#0c0f1c" pointerEvents="none">
+                  <text x={x} y={y} textAnchor="middle" dominantBaseline="central" fontSize="13" fontWeight="800" fill={semi === 0 ? '#fff' : '#0b0c0f'} pointerEvents="none">
                     {fmtNote(n.name, notation)}
                   </text>
-                  <text x={lx} y={ly} textAnchor="middle" dominantBaseline="central" fontSize="10.5" fontWeight="700" fill="var(--accent)" pointerEvents="none">
+                  <text x={lx} y={ly} textAnchor="middle" dominantBaseline="central" fontSize="10.5" fontWeight="700" fill="var(--accent-text)" pointerEvents="none">
                     {fmtDegree(n.label)}
                   </text>
                 </>

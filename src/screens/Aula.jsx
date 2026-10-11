@@ -38,7 +38,7 @@ function RootChallenge() {
       buzz(15);
       const next = new Set(found).add(key);
       setFound(next);
-      setMsg(next.size === roots.length ? '🎉 Você achou todas as notas Lá!' : `Isso! Falta${roots.length - next.size > 1 ? 'm' : ''} ${roots.length - next.size}.`);
+      setMsg(next.size === roots.length ? 'Você achou todas as notas Lá!' : `Isso! Falta${roots.length - next.size > 1 ? 'm' : ''} ${roots.length - next.size}.`);
       if (next.size === roots.length) {
         setTimeout(() => {
           playSuccess();
@@ -75,7 +75,7 @@ function RootChallenge() {
             setTimeout(() => setHint(false), 1800);
           }}
         >
-          💡 Dica
+          Dica
         </button>
       </div>
       <AnimatePresence mode="wait">
@@ -126,7 +126,7 @@ function MoveShape() {
 
 /* ---------- Passo 6: checklist ---------- */
 const TODO = [
-  'Toque a posição 1 subindo e descendo, devagar 🐢',
+  'Toque a posição 1 subindo e descendo, devagar ',
   'Experimente o padrão “De 3 em 3”',
   'Comece e termine sempre na tônica (a bolinha vermelha)',
   'Escolha outro tom e repita',
@@ -143,7 +143,7 @@ function Checklist() {
           <motion.li key={i} whileTap={{ scale: 0.97 }} onClick={() => { buzz(8); setTicked((s) => { const n = new Set(s); n.has(i) ? n.delete(i) : n.add(i); return n; }); }} className={on ? 'on' : ''}>
             <span className="box">
               <svg viewBox="0 0 20 20">
-                <motion.path d="M4 10.5l4 4 8-9" fill="none" stroke="#0c0f1c" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={false} animate={{ pathLength: on ? 1 : 0, opacity: on ? 1 : 0 }} transition={{ duration: 0.25 }} />
+                <motion.path d="M4 10.5l4 4 8-9" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={false} animate={{ pathLength: on ? 1 : 0, opacity: on ? 1 : 0 }} transition={{ duration: 0.25 }} />
               </svg>
             </span>
             {t}
@@ -200,7 +200,7 @@ function useSteps(notation) {
   const note = (n) => fmtNote(n, notation);
   return [
     {
-      emoji: '🖐️',
+      emoji: '',
       title: 'Só cinco notas',
       body: (
         <>
@@ -214,7 +214,7 @@ function useSteps(notation) {
       ),
     },
     {
-      emoji: '🎯',
+      emoji: '',
       title: 'Desafio: ache a tônica',
       body: (
         <>
@@ -227,7 +227,7 @@ function useSteps(notation) {
       ),
     },
     {
-      emoji: '📦',
+      emoji: '',
       title: 'A caixa 1',
       body: (
         <>
@@ -243,7 +243,7 @@ function useSteps(notation) {
       ),
     },
     {
-      emoji: '🧩',
+      emoji: '',
       title: 'As 5 caixas',
       body: (
         <>
@@ -256,7 +256,7 @@ function useSteps(notation) {
       ),
     },
     {
-      emoji: '👯',
+      emoji: '',
       title: 'Menor e maior: mesmo desenho',
       body: (
         <>
@@ -268,7 +268,7 @@ function useSteps(notation) {
       ),
     },
     {
-      emoji: '🛝',
+      emoji: '',
       title: 'Deslize para trocar de tom',
       body: (
         <>
@@ -281,7 +281,7 @@ function useSteps(notation) {
       ),
     },
     {
-      emoji: '🚀',
+      emoji: '',
       title: 'Hora de praticar',
       body: (
         <>
@@ -322,7 +322,7 @@ export function Aula() {
   const step = steps[i];
   return (
     <div className="stack" ref={top}>
-      <ScreenTitle emoji="📚" title="Aula guiada" subtitle="Passo a passo, na afinação padrão." />
+      <ScreenTitle kicker="Passo a passo" title="Aula guiada" subtitle="Tudo na afinação padrão." />
 
       <div className="steps" role="tablist" aria-label="Passos da aula">
         {steps.map((s, k) => (
@@ -348,8 +348,8 @@ export function Aula() {
             transition={{ type: 'spring', stiffness: 320, damping: 32, duration: 0.2 }}
           >
             <div className="lesson-head">
-              <motion.span className="lesson-emoji" initial={{ scale: 0, rotate: -30 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 300, damping: 12, delay: 0.1 }}>
-                {step.emoji}
+              <motion.span className="lesson-num" initial={{ scale: 0, rotate: -30 }} animate={{ scale: 1, rotate: 0 }} transition={{ type: 'spring', stiffness: 300, damping: 12, delay: 0.1 }}>
+                {i + 1}
               </motion.span>
               <div>
                 <small>
@@ -369,7 +369,7 @@ export function Aula() {
         </button>
         {last ? (
           <motion.button className="btn btn-primary" whileTap={{ scale: 0.94 }} animate={{ scale: [1, 1.04, 1] }} transition={{ repeat: Infinity, duration: 1.8 }} onClick={() => { setParty(true); setFinished(true); }}>
-            🎉 Concluir aula
+            Concluir aula
           </motion.button>
         ) : (
           <button className="btn btn-primary" onClick={() => go(i + 1)}>
@@ -381,7 +381,7 @@ export function Aula() {
       <AnimatePresence>
         {finished && (
           <motion.div className="finish" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}>
-            <b>Parabéns! Você já conhece a pentatônica 🎸</b>
+            <b>Parabéns! Você já conhece a pentatônica </b>
             <button className="btn btn-primary" onClick={() => goTo(1)}>
               Ir para o Braço →
             </button>

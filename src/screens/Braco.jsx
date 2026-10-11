@@ -24,7 +24,7 @@ export function Braco() {
 
   return (
     <div className="stack">
-      <ScreenTitle emoji="🎸" title="Pentatônica no braço" subtitle="Toque nas bolinhas para ouvir cada nota." />
+      <ScreenTitle kicker="Toque junto" title="Pentatônica no braço" subtitle="Toque nas bolinhas para ouvir cada nota." />
 
       <Card>
         <div className="row-between">
@@ -48,8 +48,8 @@ export function Braco() {
           value={type}
           onChange={setType}
           options={[
-            { value: 'minor-pent', label: '😢 Menor' },
-            { value: 'major-pent', label: '😊 Maior' },
+            { value: 'minor-pent', label: 'Menor' },
+            { value: 'major-pent', label: 'Maior' },
           ]}
         />
       </Card>
@@ -84,7 +84,7 @@ export function Braco() {
             options={[
               { value: 'note', label: 'Notas' },
               { value: 'degree', label: 'Graus' },
-              { value: 'hidden', label: '🙈 Treino' },
+              { value: 'hidden', label: 'Treino' },
             ]}
           />
           {position === 0 && (

@@ -73,21 +73,31 @@ export function Card({ children, className = '', delay = 0, ...rest }) {
   );
 }
 
-export function ScreenTitle({ emoji, title, subtitle }) {
+export function ScreenTitle({ kicker, title, subtitle }) {
   return (
     <header className="screen-title">
-      <motion.div
-        className="screen-emoji"
-        initial={{ scale: 0, rotate: -40 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 14 }}
-      >
-        {emoji}
-      </motion.div>
-      <div>
-        <h1>{title}</h1>
-        {subtitle && <p>{subtitle}</p>}
-      </div>
+      {kicker && (
+        <motion.span className="kicker" initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.35 }}>
+          {kicker}
+        </motion.span>
+      )}
+      <motion.h1 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ type: 'spring', stiffness: 260, damping: 24 }}>
+        {title}
+      </motion.h1>
+      {subtitle && <p>{subtitle}</p>}
+      <svg className="title-arrow" viewBox="0 0 320 16" aria-hidden>
+        <motion.path
+          d="M2 8H312M303 2l10 6-10 6"
+          fill="none"
+          stroke="var(--accent)"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
+        />
+      </svg>
     </header>
   );
 }

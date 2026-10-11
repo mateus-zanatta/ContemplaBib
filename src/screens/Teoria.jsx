@@ -32,7 +32,7 @@ function InstallCard() {
   if (standalone || done) return null;
   return (
     <Card className="install">
-      <h2>📲 Instale na tela inicial</h2>
+      <h2>Instale na tela inicial</h2>
       {evt ? (
         <>
           <p>Abra como um app de verdade, em tela cheia e até sem internet.</p>
@@ -74,7 +74,7 @@ export function Teoria() {
 
   return (
     <div className="stack">
-      <ScreenTitle emoji="🎓" title="O que é a pentatônica?" subtitle="Penta = cinco. Só 5 notas, e quase nada soa errado." />
+      <ScreenTitle kicker="Comece por aqui" title="O que é a pentatônica?" subtitle="Penta = cinco. Só 5 notas, e quase nada soa errado." />
 
       <Card>
         <h2>Cinco notas em vez de sete</h2>
@@ -82,7 +82,7 @@ export function Teoria() {
           A escala “normal” (dó-ré-mi-fá-sol-lá-si) tem <b>7 notas</b>. A pentatônica <b>tira as 2 notas mais “tensas”</b> e
           deixa só 5. Resultado: você pode tocar quase qualquer uma delas por cima de uma música que vai soar bem.
         </p>
-        <p className="hint">👇 Escolha um tom e toque nas bolinhas do círculo.</p>
+        <p className="hint">Escolha um tom e toque nas bolinhas do círculo.</p>
 
         <ChipGrid
           label="Tônica"
@@ -97,8 +97,8 @@ export function Teoria() {
           value={type}
           onChange={setType}
           options={[
-            { value: 'minor-pent', label: '😢 Menor' },
-            { value: 'major-pent', label: '😊 Maior' },
+            { value: 'minor-pent', label: 'Menor' },
+            { value: 'major-pent', label: 'Maior' },
           ]}
         />
         <PitchRing rootPc={rootPc} scale={scale} notation={notation} />

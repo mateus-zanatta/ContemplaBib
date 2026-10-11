@@ -24,7 +24,7 @@ export function Escalas() {
 
   return (
     <div className="stack">
-      <ScreenTitle emoji="🎼" title="Todas as escalas" subtitle="Escolha a afinação, o tom e a escala." />
+      <ScreenTitle kicker="Vá além" title="Todas as escalas" subtitle="Escolha a afinação, o tom e a escala." />
 
       <Card>
         <label className="label" htmlFor="tuning-select">Afinação</label>
@@ -66,7 +66,7 @@ export function Escalas() {
               cols={2}
               value={scaleId}
               onChange={setScaleId}
-              options={SCALES.filter((s) => s.group === g).map((s) => ({ value: s.id, label: `${s.emoji} ${s.name}` }))}
+              options={SCALES.filter((s) => s.group === g).map((s) => ({ value: s.id, label: s.name }))}
             />
           </div>
         ))}
@@ -82,7 +82,7 @@ export function Escalas() {
             transition={{ duration: 0.18 }}
           >
             <h2>
-              {scale.emoji} {fmtNote(spelled[0].name, notation)} {scale.name}
+              {fmtNote(spelled[0].name, notation)} {scale.name}
             </h2>
             <p>{scale.mood}</p>
             <div className="formula">
@@ -120,7 +120,7 @@ export function Escalas() {
             options={[
               { value: 'note', label: 'Notas' },
               { value: 'degree', label: 'Graus' },
-              { value: 'hidden', label: '🙈 Treino' },
+              { value: 'hidden', label: 'Treino' },
             ]}
           />
           <Segmented

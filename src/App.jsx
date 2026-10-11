@@ -126,12 +126,20 @@ export default function App() {
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <span className="logo" aria-hidden>
-            {[0, 1, 2, 3, 4].map((i) => (
-              <motion.i key={i} animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 2.4, delay: i * 0.18, ease: 'easeInOut' }} />
-            ))}
-          </span>
-          <b>Pentatônica</b>
+          <motion.img
+            className="brand-logo"
+            src={`${import.meta.env.BASE_URL}icons/logo-em.png`}
+            alt="Logo E.M. Aulas de Música"
+            width="38"
+            height="38"
+            initial={{ rotate: -120, scale: 0 }}
+            animate={{ rotate: 0, scale: 1 }}
+            transition={{ type: 'spring', stiffness: 160, damping: 14 }}
+          />
+          <div className="brand-text">
+            <b>EM Aulas de Música</b>
+            <small>Pentatônica</small>
+          </div>
         </div>
         <div className="top-actions">
           <motion.button className="icon-btn" whileTap={{ scale: 0.88 }} onClick={toggleNotation} aria-label="Alternar entre cifras e solfejo" title="Alternar entre cifras (A B C) e solfejo (Lá Si Dó)">

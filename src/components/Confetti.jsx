@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const COLORS = ['#ff5d73', '#ffb627', '#33d6a6', '#6c8cff', '#ff7ac8', '#b58cff'];
+const COLORS = ['#e03023', '#ff5a47', '#ffffff', '#ffffff', '#9a9fa8', '#f2b84b'];
 
 export function Confetti({ show }) {
   const bits = useMemo(

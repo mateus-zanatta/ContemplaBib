@@ -3,15 +3,15 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Fretboard } from './Fretboard.jsx';
 import { Segmented } from './ui.jsx';
 import { useApp } from '../state.jsx';
-import { buzz, createBus, playNote } from '../audio.js';
+import { TONES, buzz, createBus, playNote } from '../audio.js';
 import { buildPositions, fmtDegree, fmtNote, makePattern, scaleNotesInRange, spellScale } from '../theory/music.js';
 import { getScale } from '../theory/data.js';
 
-export const POS_COLORS = ['#6c8cff', '#33d6a6', '#ffb627', '#ff7ac8', '#b58cff'];
+export const POS_COLORS = ['#f4f4f4', '#f2b84b', '#4fd1c5', '#8ab4ff', '#c792ea'];
 const SPEEDS = [
-  { value: 700, label: '🐢' },
-  { value: 420, label: '🚶' },
-  { value: 230, label: '🐇' },
+  { value: 700, label: 'Lento' },
+  { value: 420, label: 'Médio' },
+  { value: 230, label: 'Rápido' },
 ];
 const PATTERNS = [
   { value: 'up', label: 'Subir' },
@@ -58,7 +58,7 @@ export function ScaleBoard({
   lowest = false,
   onPlayStateChange,
 }) {
-  const { notation } = useApp();
+  const { notation, tone, setTone } = useApp();
   const scale = getScale(scaleId);
   const spelled = useMemo(() => spellScale(rootPc, scale), [rootPc, scale]);
   const nameByPc = useMemo(() => new Map(spelled.map((n) => [n.pc, n.name])), [spelled]);
@@ -211,6 +211,7 @@ export function ScaleBoard({
             </motion.button>
             <Segmented small label="Velocidade" options={SPEEDS} value={speed} onChange={setSpeed} />
           </div>
+          <Segmented small label="Timbre da guitarra" options={TONES.map((t) => ({ value: t.id, label: t.label }))} value={tone} onChange={setTone} />
         </div>
       )}
     </div>

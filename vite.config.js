@@ -9,18 +9,18 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icons/favicon.svg', 'icons/apple-touch-icon.png'],
+      includeAssets: ['icons/logo-em.png', 'icons/apple-touch-icon.png'],
       manifest: {
-        name: 'Pentatônica — aprenda guitarra',
-        short_name: 'Pentatônica',
+        name: 'EM Aulas de Música — Pentatônica',
+        short_name: 'EM Pentatônica',
         description: 'Escala pentatônica, afinações e escalas na guitarra, de forma visual e interativa.',
         lang: 'pt-BR',
         start_url: './',
         scope: './',
         display: 'standalone',
         orientation: 'any',
-        background_color: '#0c0f1c',
-        theme_color: '#0c0f1c',
+        background_color: '#0b0c0f',
+        theme_color: '#0b0c0f',
         icons: [
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },

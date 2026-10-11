@@ -1,4 +1,4 @@
-# 🎸 Pentatônica — app didático de guitarra
+# Pentatônica — app didático de guitarra (EM Aulas de Música)
 
 App para celular (PWA) que ensina a **escala pentatônica** na guitarra, com **afinações** e **todas as escalas de cada afinação**.
 Feito com **React + Vite + Framer Motion** (animações). Funciona **offline** e pode ser instalado na **tela inicial** como um app normal.

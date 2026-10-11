@@ -80,7 +80,7 @@ function TuningCard({ t, active, onUse, notation, index }) {
         <p className="desc">{t.desc}</p>
         <div className="btn-row">
           <button className="btn btn-ghost" onClick={strum}>
-            🎶 Ouvir
+            Ouvir
           </button>
           <button className={`btn ${active ? 'btn-ghost' : 'btn-primary'}`} onClick={onUse} disabled={active}>
             {active ? 'Selecionada' : 'Usar nas telas'}
@@ -95,7 +95,7 @@ export function Afinacoes() {
   const { tuningId, setTuningId, notation } = useApp();
   return (
     <div className="stack">
-      <ScreenTitle emoji="🎚️" title="Afinações" subtitle="Toque em uma corda para ouvir como ela deve soar." />
+      <ScreenTitle kicker="Deixe afinado" title="Afinações" subtitle="Toque em uma corda para ouvir como ela deve soar." />
 
       <Card>
         <h2>Como afinar de ouvido</h2>
