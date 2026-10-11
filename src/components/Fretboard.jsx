@@ -82,9 +82,9 @@ export function Fretboard({
       <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Braço da guitarra">
         <defs>
           <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#3b2619" />
-            <stop offset="0.5" stopColor="#2e1d13" />
-            <stop offset="1" stopColor="#25170f" />
+            <stop offset="0" stopColor="#1f2228" />
+            <stop offset="0.5" stopColor="#181b20" />
+            <stop offset="1" stopColor="#121418" />
           </linearGradient>
           <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
             <feGaussianBlur stdDeviation="3" result="b" />
@@ -102,12 +102,12 @@ export function Fretboard({
           .filter((f) => SINGLE.includes(f) || DOUBLE.includes(f))
           .map((f) =>
             DOUBLE.includes(f) ? (
-              <g key={`in${f}`} fill="rgba(255,255,255,.1)">
+              <g key={`in${f}`} fill="rgba(255,255,255,.07)">
                 <circle cx={cx(f)} cy={boardT + (boardB - boardT) * 0.3} r="5" />
                 <circle cx={cx(f)} cy={boardT + (boardB - boardT) * 0.7} r="5" />
               </g>
             ) : (
-              <circle key={`in${f}`} cx={cx(f)} cy={(boardT + boardB) / 2} r="5" fill="rgba(255,255,255,.1)" />
+              <circle key={`in${f}`} cx={cx(f)} cy={(boardT + boardB) / 2} r="5" fill="rgba(255,255,255,.07)" />
             ),
           )}
 
@@ -119,13 +119,13 @@ export function Fretboard({
             x2={lineX(f)}
             y1={boardT}
             y2={boardB}
-            stroke="#8e8a99"
+            stroke="#5d626d"
             strokeWidth="1.6"
-            opacity=".7"
+            opacity=".9"
           />
         ))}
-        {!open && <line x1={lineX(fretTo + 1)} x2={lineX(fretTo + 1)} y1={boardT} y2={boardB} stroke="#8e8a99" strokeWidth="1.6" opacity=".7" />}
-        {open && <rect x={nutX - 3} y={boardT} width="5" height={boardB - boardT} rx="1.5" fill="#efe6cf" />}
+        {!open && <line x1={lineX(fretTo + 1)} x2={lineX(fretTo + 1)} y1={boardT} y2={boardB} stroke="#5d626d" strokeWidth="1.6" opacity=".9" />}
+        {open && <rect x={nutX - 3} y={boardT} width="5" height={boardB - boardT} rx="1.5" fill="#f1f1f1" />}
 
         {/* cordas */}
         {strings.map((_, s) => (
@@ -135,7 +135,7 @@ export function Fretboard({
             x2={boardR - 2}
             y1={cy(s)}
             y2={cy(s)}
-            stroke="#d7d4de"
+            stroke="#c9ccd3"
             strokeWidth={s < 3 ? 1 + (3 - s) * 0.45 : 1}
             opacity=".85"
             initial={{ y: 0 }}
@@ -163,7 +163,7 @@ export function Fretboard({
                       cx={cx(f)}
                       cy={cy(s)}
                       r={r}
-                      fill="#ff4d6d"
+                      fill="#e03023"
                       initial={{ scale: 0.5, opacity: 1 }}
                       animate={{ scale: [0.5, 1.15, 1], opacity: [1, 1, 0] }}
                       transition={{ duration: 0.8, times: [0, 0.25, 1] }}
@@ -210,7 +210,7 @@ export function Fretboard({
                   <circle
                     r={rr}
                     fill={ghost ? 'rgba(255,255,255,.22)' : root ? 'var(--root)' : d.color || 'var(--note)'}
-                    stroke={playing ? '#fff' : 'rgba(0,0,0,.35)'}
+                    stroke={playing ? '#fff' : 'rgba(0,0,0,.45)'}
                     strokeWidth={playing ? 2.4 : 1}
                     filter={playing ? 'url(#glow)' : undefined}
                   />
@@ -220,7 +220,7 @@ export function Fretboard({
                       dominantBaseline="central"
                       fontSize={Math.max(8, r * (d.label.length > 2 ? 0.72 : 0.9))}
                       fontWeight="800"
-                      fill="#101428"
+                      fill={root ? '#fff' : '#0b0c0f'}
                       style={{ pointerEvents: 'none', userSelect: 'none' }}
                     >
                       {d.label}
@@ -266,7 +266,7 @@ export function Fretboard({
             textAnchor="middle"
             fontSize="9.5"
             fontWeight={SINGLE.includes(f) || DOUBLE.includes(f) ? 800 : 500}
-            fill={SINGLE.includes(f) || DOUBLE.includes(f) ? 'var(--accent)' : 'var(--muted)'}
+            fill={SINGLE.includes(f) || DOUBLE.includes(f) ? 'var(--accent-text)' : 'var(--muted)'}
           >
             {f}
           </text>
