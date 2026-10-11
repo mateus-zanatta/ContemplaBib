@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Fretboard } from './Fretboard.jsx';
 import { Segmented } from './ui.jsx';
 import { useApp } from '../state.jsx';
-import { buzz, createBus, playNote } from '../audio.js';
+import { TONES, buzz, createBus, playNote } from '../audio.js';
 import { buildPositions, fmtDegree, fmtNote, makePattern, scaleNotesInRange, spellScale } from '../theory/music.js';
 import { getScale } from '../theory/data.js';
 
@@ -58,7 +58,7 @@ export function ScaleBoard({
   lowest = false,
   onPlayStateChange,
 }) {
-  const { notation } = useApp();
+  const { notation, tone, setTone } = useApp();
   const scale = getScale(scaleId);
   const spelled = useMemo(() => spellScale(rootPc, scale), [rootPc, scale]);
   const nameByPc = useMemo(() => new Map(spelled.map((n) => [n.pc, n.name])), [spelled]);
@@ -211,6 +211,7 @@ export function ScaleBoard({
             </motion.button>
             <Segmented small label="Velocidade" options={SPEEDS} value={speed} onChange={setSpeed} />
           </div>
+          <Segmented small label="Timbre da guitarra" options={TONES.map((t) => ({ value: t.id, label: t.label }))} value={tone} onChange={setTone} />
         </div>
       )}
     </div>
